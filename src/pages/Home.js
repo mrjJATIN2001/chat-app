@@ -1,8 +1,17 @@
-/* eslint-disable arrow-body-style */
 import React from 'react';
+import { Col, Grid, Row } from 'rsuite';
+import SideBar from '../components/Sidebar';
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Grid fluid className="h-100">
+      <Row>
+        <Col xs={24} md={8}>
+          <SideBar />
+        </Col>
+      </Row>
+    </Grid>
+  );
 };
 
 export default Home;
