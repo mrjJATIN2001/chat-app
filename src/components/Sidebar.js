@@ -1,5 +1,5 @@
 import React from 'react';
-import DashboardToggle from '../dashboard/DashboardToggle';
+import DashboardToggle from './dashboard/DashboardToggle';
 
 const SideBar = () => {
   return (

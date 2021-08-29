@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { Alert, Button, Drawer, Icon } from 'rsuite';
 import Dashboard from '.';
-import { useMediaQuery, useModelState } from '../misc/custom-hooks';
-import { auth } from '../misc/firebase';
+import { useMediaQuery, useModelState } from '../../misc/custom-hooks';
+import { auth } from '../../misc/firebase';
 
 const DashboardToggle = () => {
   const { isOpen, close, open } = useModelState();
