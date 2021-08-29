@@ -28,7 +28,7 @@ const Signin = () => {
   };
 
   const onPhoneSignIn = () => {
-    signInWithProvider(new firebase.auth.PhoneAuthProvider());
+    Alert.error('Not available', 400);
   };
 
   return (
