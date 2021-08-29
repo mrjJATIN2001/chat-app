@@ -1,0 +1,8 @@
+/* eslint-disable arrow-body-style */
+import React from 'react';
+
+const Signin = () => {
+  return <div>Sign In</div>;
+};
+
+export default Signin;
