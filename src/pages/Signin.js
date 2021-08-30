@@ -27,8 +27,8 @@ const Signin = () => {
     signInWithProvider(new firebase.auth.GoogleAuthProvider());
   };
 
-  const onPhoneSignIn = () => {
-    Alert.error('Not available', 400);
+  const onFacebookSignIn = () => {
+    signInWithProvider(new firebase.auth.FacebookAuthProvider());
   };
 
   return (
@@ -45,8 +45,8 @@ const Signin = () => {
                 <Button block color="green" onClick={onGoogleSignIn}>
                   <Icon icon="google" /> Continue with Google
                 </Button>
-                <Button block color="blue" onClick={onPhoneSignIn}>
-                  <Icon icon="phone" /> Continue with Phone
+                <Button block color="blue" onClick={onFacebookSignIn}>
+                  <Icon icon="facebook" /> Continue with Facebook
                 </Button>
               </div>
             </Panel>
