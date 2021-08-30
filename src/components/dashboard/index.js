@@ -5,17 +5,22 @@ import { database } from '../../misc/firebase';
 import EditableInput from '../EditableInput';
 import ProvidedBlock from './ProvidedBlock';
 import AvatarUploadBtn from './AvatarUploadBtn';
+import { getUserUpdates } from '../../misc/Helpers';
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
 
   const onSave = async newData => {
-    const userNicknameRef = database
-      .ref(`/profiles/${profile.uid}`)
-      .child('name');
-
     try {
-      await userNicknameRef.set(newData);
+      const updates = await getUserUpdates(
+        profile.uid,
+        'name',
+        newData,
+        database
+      );
+
+      await database.ref().update(updates);
+
       Alert.success('Nickname has been updated', 4000);
     } catch (err) {
       Alert.error(err.message, 4000);
