@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Divider } from 'rsuite';
 import CreateRoomBtnModal from './dashboard/CreateRoomBtnModal';
 import DashboardToggle from './dashboard/DashboardToggle';
-import ChatRoom from './rooms/ChatRoom';
+import ChatRoomList from './rooms/ChatRoomList';
 
 const SideBar = () => {
   const topSidebarRef = useRef();
@@ -21,7 +21,7 @@ const SideBar = () => {
         <CreateRoomBtnModal />
         <Divider>Join coversation</Divider>
       </div>
-      <ChatRoom aboveElHeight={height} />
+      <ChatRoomList aboveElHeight={height} />
     </div>
   );
 };
