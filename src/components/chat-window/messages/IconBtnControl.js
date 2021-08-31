@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge, Icon, IconButton, Tooltip, Whisper } from 'rsuite';
 
-const conditionalBadge = ({ condition, children }) => {
+const ConditionalBadge = ({ condition, children }) => {
   return condition ? <Badge content={condition}>{children}</Badge> : children;
 };
 
@@ -15,10 +15,10 @@ const IconBtnControl = ({
 }) => {
   return (
     <div
-      className="ml-1"
+      className="ml-2"
       style={{ visibility: isVisible ? 'visible' : 'hidden' }}
     >
-      <conditionalBadge condition={badgeContent}>
+      <ConditionalBadge condition={badgeContent}>
         <Whisper
           placement="top"
           delay={0}
@@ -35,7 +35,7 @@ const IconBtnControl = ({
             icon={<Icon icon={iconName} />}
           />
         </Whisper>
-      </conditionalBadge>
+      </ConditionalBadge>
     </div>
   );
 };

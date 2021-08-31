@@ -1,26 +1,29 @@
-/* eslint-disable no-constant-condition */
 import React, { memo } from 'react';
 import { Button } from 'rsuite';
 import TimeAgo from 'timeago-react';
 import { useContextUpdate } from 'use-context-selector';
 import { useCurrentRoom } from '../../../context/current-room.context';
-import { useHover } from '../../../misc/custom-hooks';
+import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
 import ProfileAvatar from '../../ProfileAvatar';
 import Presence from '../Presence';
 import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
-const MessageItem = ({ message, handleAdmin }) => {
-  const { author, createdAt, text } = message;
+const MessageItem = ({ message, handleAdmin, handleLike }) => {
+  const { author, createdAt, text, likes, likeCount } = message;
 
   const [selfRef, isHovered] = useHover();
+
+  const isMobile = useMediaQuery(`(max-width: 992px)`);
 
   const isAdmin = useCurrentRoom(v => v.isAdmin);
   const admins = useCurrentRoom(v => v.admins);
   const isMsgAuthorAdmin = admins.includes(author.uid);
   const isAuthor = auth.currentUser.uid === author.uid;
   const canGrantAdmin = isAdmin && !isAuthor;
+  const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
+  const canShowIcons = isMobile || isHovered;
 
   return (
     <li
@@ -55,12 +58,12 @@ const MessageItem = ({ message, handleAdmin }) => {
         />
 
         <IconBtnControl
-          {...(false ? { color: 'red' } : {})}
-          isVisible
+          {...(isLiked ? { color: 'red' } : {})}
+          isVisible={canShowIcons}
           iconName="heart"
           tooltip="like this message"
-          onClick={() => {}}
-          badgeContent={5}
+          onClick={() => handleLike(message.id)}
+          badgeContent={likeCount}
         />
       </div>
 
