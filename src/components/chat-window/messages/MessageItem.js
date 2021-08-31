@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { Button } from 'rsuite';
 import TimeAgo from 'timeago-react';
-import { useContextUpdate } from 'use-context-selector';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
