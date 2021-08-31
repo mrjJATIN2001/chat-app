@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React, { memo } from 'react';
 import { Button } from 'rsuite';
 import TimeAgo from 'timeago-react';
@@ -7,6 +8,7 @@ import { useHover } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
 import ProfileAvatar from '../../ProfileAvatar';
 import Presence from '../Presence';
+import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
 const MessageItem = ({ message, handleAdmin }) => {
@@ -50,6 +52,15 @@ const MessageItem = ({ message, handleAdmin }) => {
         <TimeAgo
           datetime={createdAt}
           className="font-normal text-black-45 ml-2"
+        />
+
+        <IconBtnControl
+          {...(false ? { color: 'red' } : {})}
+          isVisible
+          iconName="heart"
+          tooltip="like this message"
+          onClick={() => {}}
+          badgeContent={5}
         />
       </div>
 
